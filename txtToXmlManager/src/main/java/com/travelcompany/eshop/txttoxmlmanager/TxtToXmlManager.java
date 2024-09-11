@@ -1,5 +1,8 @@
 package com.travelcompany.eshop.txttoxmlmanager;
 
+import com.travelcompany.eshop.txttoxmlmanager.services.txtToXmlParseService;
+import java.util.ArrayList;
+
 /**
  *
  * @author User
@@ -7,6 +10,11 @@ package com.travelcompany.eshop.txttoxmlmanager;
 public class TxtToXmlManager {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        String txtFileName = "testDoc.txt";
+        txtToXmlParseService txtToXmlConverter = new txtToXmlParseService();
+        ArrayList<String> allFileLines = txtToXmlConverter.parseTxtFile("files/txt/" + txtFileName);
+        for (String line : allFileLines){
+            System.out.println(line);
+        }
     }
 }
