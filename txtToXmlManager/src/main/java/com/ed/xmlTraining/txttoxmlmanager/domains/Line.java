@@ -1,4 +1,4 @@
-package com.travelcompany.eshop.txttoxmlmanager.domains;
+package com.ed.xmlTraining.txttoxmlmanager.domains;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
  *
  * @author User
  */
-@XmlRootElement(name = "paragraph")
+@XmlRootElement(name = "line")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Paragraph {
-    private ArrayList<Line> lines;
+public class Line {
+    private ArrayList<String> words;
 }

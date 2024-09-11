@@ -1,4 +1,4 @@
-package com.travelcompany.eshop.txttoxmlmanager.services;
+package com.ed.xmlTraining.txttoxmlmanager.services;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

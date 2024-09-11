@@ -1,4 +1,4 @@
-package com.travelcompany.eshop.txttoxmlmanager.domains;
+package com.ed.xmlTraining.txttoxmlmanager.domains;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;

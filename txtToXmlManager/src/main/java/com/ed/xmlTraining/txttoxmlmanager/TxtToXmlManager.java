@@ -1,6 +1,6 @@
-package com.travelcompany.eshop.txttoxmlmanager;
+package com.ed.xmlTraining.txttoxmlmanager;
 
-import com.travelcompany.eshop.txttoxmlmanager.services.txtToXmlParseService;
+import com.ed.xmlTraining.txttoxmlmanager.services.txtToXmlParseService;
 import java.util.ArrayList;
 
 /**
