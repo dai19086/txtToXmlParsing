@@ -1,6 +1,6 @@
 package com.ed.xmlTraining.txttoxmlmanager;
 
-import com.ed.xmlTraining.txttoxmlmanager.services.txtToXmlParseService;
+import com.ed.xmlTraining.txttoxmlmanager.services.TxtToXmlParseService;
 import java.util.ArrayList;
 
 /**
@@ -11,10 +11,8 @@ public class TxtToXmlManager {
 
     public static void main(String[] args) {
         String txtFileName = "testDoc.txt";
-        txtToXmlParseService txtToXmlConverter = new txtToXmlParseService();
-        ArrayList<String> allFileLines = txtToXmlConverter.parseTxtFile("files/txt/" + txtFileName);
-        for (String line : allFileLines){
-            System.out.println(line);
-        }
+        String xmlNewFileName = "parsedTxt.xml";
+        TxtToXmlParseService txtToXmlConverter = new TxtToXmlParseService();
+        txtToXmlConverter.writeXmlFromTxt("files/xml/" + xmlNewFileName, "files/txt/" + txtFileName);
     }
 }

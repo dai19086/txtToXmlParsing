@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><book>
+    <chapter id="1">
+        <paragraph>
+            <line> Hello.</line>
+            <line> My name is Kostas, and today we are going to learn something.</line>
+            <line> XML Management.</line>
+            <line> Are you ready.</line>
+            <line> Are you sure.</line>
+            <line> Say the magic word.</line>
+            <line> That's right.</line>
+            <line> LET'S.</line>
+            <line> GO.</line>
+        </paragraph>
+    </chapter>
+    <statistics>
+        <paragraphs>1</paragraphs>
+        <lines>9</lines>
+        <words>38</words>
+        <distinctwords>27</distinctwords>
+        <date>2024-09-14 00:57:05</date>
+        <author>Konstantinos Pailas</author>
+        <classname>txtToXmlManager</classname>
+    </statistics>
+</book>
