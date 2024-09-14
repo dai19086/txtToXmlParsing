@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?><book><chapter id="1"><paragraph id="1"><line> Hello.</line><line> My name is Kostas, and today we are going to learn something.</line><line> XML Management.</line><line> Are you ready.</line><line> Are you sure.</line><line> Say the magic word.</line><line> That's right.</line><line> LET'S.</line><line> GO.</line></paragraph></chapter><statistics><number_of_paragraphs>1</number_of_paragraphs><number_of_lines>9</number_of_lines><number_of_words>38</number_of_words><number_of_distinct_words>27</number_of_distinct_words><date_of_creation>14/09/2024 20:08:33</date_of_creation><author>Konstantinos Pailas</author><application_class_name>txtToXmlManager</application_class_name></statistics></book>
+<?xml version="1.0" encoding="UTF-8"?><book>
+    <chapter id="1">
+        <paragraph id="1">
+            <line> Hello.</line>
+            <line> My name is Kostas, and today we are going to learn something.</line>
+            <line> XML Management.</line>
+            <line> Are you ready.</line>
+            <line> Are you sure.</line>
+            <line> Say the magic word.</line>
+            <line> That's right.</line>
+            <line> LET'S.</line>
+            <line> GO.</line>
+        </paragraph>
+    </chapter>
+    <statistics>
+        <number_of_paragraphs>1</number_of_paragraphs>
+        <number_of_lines>9</number_of_lines>
+        <number_of_words>38</number_of_words>
+        <number_of_distinct_words>27</number_of_distinct_words>
+        <date_of_creation>14/09/2024 23:49:58</date_of_creation>
+        <author>Konstantinos Pailas</author>
+        <application_class_name>txtToXmlManager</application_class_name>
+    </statistics>
+</book>

@@ -28,17 +28,9 @@ public class TxtToXmlManager {
         txtToXmlConverter.writeXmlFromTxt(xmlNewFileName, txtFileName);
 
         XmlReadWriteService xmlReadWriter = new XmlReadWriteService();
-        try {
-            Book book = xmlReadWriter.xmlReader(xmlNewFileName);
-            System.out.println(book);
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (XMLStreamException ex) {
-            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        Book book = xmlReadWriter.xmlReader(xmlNewFileName);
+        System.out.println(book);
+
     }
 }
