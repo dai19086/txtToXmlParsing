@@ -16,6 +16,7 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+
 /**
  *
  * @author User
@@ -62,6 +63,7 @@ public class TxtToXmlParseService {
                 while ((fileLine != null) && (paragraphCount < PARAGRAPHS_IN_CHAPTER)) {
                     paragraphCount++;
                     xmlWriter.writeStartElement("paragraph");
+                    xmlWriter.writeAttribute("id", Integer.toString(paragraphCount+totalParagraphs));
                     //LINE LOOP
                     int lineCount = 0;
                     while ((fileLine != null) && (lineCount < LINES_IN_PARAGRAPH)) {
@@ -88,16 +90,16 @@ public class TxtToXmlParseService {
 
             //write down STATISTICS
             xmlWriter.writeStartElement("statistics");  //start the statistics element
-            xmlWriter.writeStartElement("noumber_of_paragraphs");
+            xmlWriter.writeStartElement("number_of_paragraphs");
             xmlWriter.writeCharacters(Integer.toString(totalParagraphs));
             xmlWriter.writeEndElement();
-            xmlWriter.writeStartElement("noumber_of_lines");
+            xmlWriter.writeStartElement("number_of_lines");
             xmlWriter.writeCharacters(Integer.toString(totalLines));
             xmlWriter.writeEndElement();
-            xmlWriter.writeStartElement("noumber_of_words");
+            xmlWriter.writeStartElement("number_of_words");
             xmlWriter.writeCharacters(Integer.toString(totalWords));
             xmlWriter.writeEndElement();
-            xmlWriter.writeStartElement("noumber_of_distinct_words");
+            xmlWriter.writeStartElement("number_of_distinct_words");
             xmlWriter.writeCharacters(Integer.toString(distinctWords.size()));
             xmlWriter.writeEndElement();
             xmlWriter.writeStartElement("date_of_creation");
