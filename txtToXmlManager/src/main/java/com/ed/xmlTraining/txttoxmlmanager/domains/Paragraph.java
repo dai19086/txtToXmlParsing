@@ -15,5 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paragraph {
+
+    private String paragraphId;
     private ArrayList<Line> lines;
+
+    public Paragraph(String paragraphId) {
+        this.paragraphId = paragraphId;
+        this.lines = new ArrayList<>();
+    }
 }

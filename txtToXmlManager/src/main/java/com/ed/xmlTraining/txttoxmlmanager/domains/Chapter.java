@@ -15,5 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Chapter {
+
+    private String chapterId;
     private ArrayList<Paragraph> paragraphs;
+
+    public Chapter(String chapterId) {
+        this.chapterId = chapterId;
+        this.paragraphs = new ArrayList<>();
+    }
 }

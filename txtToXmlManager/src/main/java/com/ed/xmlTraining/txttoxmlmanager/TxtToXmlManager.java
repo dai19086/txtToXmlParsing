@@ -1,6 +1,14 @@
 package com.ed.xmlTraining.txttoxmlmanager;
 
+import com.ed.xmlTraining.txttoxmlmanager.domains.Book;
 import com.ed.xmlTraining.txttoxmlmanager.services.TxtToXmlParseService;
+import com.ed.xmlTraining.txttoxmlmanager.services.XmlReadWriteService;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -9,9 +17,28 @@ import com.ed.xmlTraining.txttoxmlmanager.services.TxtToXmlParseService;
 public class TxtToXmlManager {
 
     public static void main(String[] args) {
-        String txtFileName = "testDoc.txt";//"sample-lorem-ipsum-text-file.txt";
-        String xmlNewFileName = "testFile.xml";//"parsedTxt.xml";
+        String loremIpsumTxt = "sample-lorem-ipsum-text-file.txt";
+        String loremIpsumXml = "parsedTxt.xml";
+        String testTxt = "testDoc.txt";
+        String testXml = "testFile.xml";
+
+        String txtFileName = "files/txt/" + testTxt;
+        String xmlNewFileName = "files/xml/" + testXml;
         TxtToXmlParseService txtToXmlConverter = new TxtToXmlParseService();
-        txtToXmlConverter.writeXmlFromTxt("files/xml/" + xmlNewFileName, "files/txt/" + txtFileName);
+        txtToXmlConverter.writeXmlFromTxt(xmlNewFileName, txtFileName);
+
+        XmlReadWriteService xmlReadWriter = new XmlReadWriteService();
+        try {
+            Book book = xmlReadWriter.xmlReader(xmlNewFileName);
+            System.out.println(book);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (XMLStreamException ex) {
+            Logger.getLogger(TxtToXmlManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

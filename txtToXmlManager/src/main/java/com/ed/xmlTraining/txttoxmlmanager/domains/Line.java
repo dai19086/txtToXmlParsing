@@ -1,7 +1,6 @@
 package com.ed.xmlTraining.txttoxmlmanager.domains;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +14,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Line {
-    private ArrayList<String> words;
+    private String line;
 }

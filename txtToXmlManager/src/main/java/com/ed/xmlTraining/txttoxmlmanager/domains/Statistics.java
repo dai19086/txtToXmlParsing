@@ -9,16 +9,16 @@ import lombok.NoArgsConstructor;
  *
  * @author User
  */
-@XmlRootElement(name = "book")
+@XmlRootElement(name = "statistics")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Statistics {
     private int numberOfParagraphs;
     private int numberOfLines;
-    private int numberOfwords;
+    private int numberOfWords;
     private int numberOfDistinctWords;
     private String creationDate;
     private String authorName;
-    private String applicationClassName;
+    private String applicationClassName; 
 }
