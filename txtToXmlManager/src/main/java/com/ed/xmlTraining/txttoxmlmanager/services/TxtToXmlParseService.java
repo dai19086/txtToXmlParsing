@@ -130,9 +130,7 @@ public class TxtToXmlParseService {
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TxtToXmlParseService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(TxtToXmlParseService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (XMLStreamException ex) {
+        } catch (IOException | XMLStreamException ex) {
             Logger.getLogger(TxtToXmlParseService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
