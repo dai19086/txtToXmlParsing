@@ -47529,12 +47529,12 @@
         </paragraph>
     </chapter>
     <statistics>
-        <noumber_of_paragraphs>2151</noumber_of_paragraphs>
-        <noumber_of_lines>43011</noumber_of_lines>
-        <noumber_of_words>365403</noumber_of_words>
-        <noumber_of_distinct_words>176</noumber_of_distinct_words>
-        <date_of_creation>14/09/2024 18:48:16</date_of_creation>
+        <number_of_paragraphs>2151</number_of_paragraphs>
+        <number_of_lines>43011</number_of_lines>
+        <number_of_words>365403</number_of_words>
+        <number_of_distinct_words>176</number_of_distinct_words>
+        <date_of_creation>15/09/2024 22:18:01</date_of_creation>
         <author>Konstantinos Pailas</author>
-        <application_class_name>txtToXmlManager</application_class_name>
+        <application_class_name>txtToXmlParseService</application_class_name>
     </statistics>
 </book>
