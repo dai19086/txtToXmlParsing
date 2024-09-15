@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="book" type="book"/>
+
+  <xs:complexType name="book">
+    <xs:sequence>
+      <xs:element name="chapter" type="chapter" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="statistics" type="statistics" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="chapter">
+    <xs:sequence>
+      <xs:element name="paragraph" type="paragraph" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="paragraph">
+    <xs:sequence>
+      <xs:element name="line" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="statistics">
+    <xs:sequence>
+      <xs:element name="number_of_paragraphs" type="xs:int"/>
+      <xs:element name="number_of_lines" type="xs:int"/>
+      <xs:element name="number_of_words" type="xs:int"/>
+      <xs:element name="number_of_distinct_words" type="xs:int"/>
+      <xs:element name="date_of_creation" type="xs:string" minOccurs="0"/>
+      <xs:element name="author" type="xs:string" minOccurs="0"/>
+      <xs:element name="application_class_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

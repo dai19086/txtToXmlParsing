@@ -34,10 +34,6 @@ public class XmlReadWriteService {
      *
      * @param filePath the file of the path to read
      * @return the Book object read from the .xml file
-     * @throws ParserConfigurationException
-     * @throws SAXException
-     * @throws IOException
-     * @throws XMLStreamException
      */
     public Book xmlReader(String filePath) {
         //initialize read  objects
@@ -141,9 +137,7 @@ public class XmlReadWriteService {
             }
             System.out.println("\nRead complete!");
             System.out.println("================================================");
-        } catch (IOException ex) {
-            Logger.getLogger(XmlReadWriteService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (XMLStreamException ex) {
+        } catch (IOException | XMLStreamException ex) {
             Logger.getLogger(XmlReadWriteService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
