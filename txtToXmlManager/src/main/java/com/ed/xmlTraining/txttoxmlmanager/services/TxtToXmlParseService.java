@@ -16,17 +16,24 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-
 /**
  *
  * @author User
  */
 public class TxtToXmlParseService {
 
+    public static final int PARAGRAPHS_IN_CHAPTER = 20;
+    private static final int LINES_IN_PARAGRAPH = 20;
+
+    /**
+     * This method reads content from a specified text file, processes it to
+     * structure it into XML format, and writes the XML output to a specified
+     * file path.
+     *
+     * @param xmlFilePath the path where the method will create the .xml file
+     * @param txtFilePath the path where the method will find the txt file
+     */
     public void writeXmlFromTxt(String xmlFilePath, String txtFilePath) {
-        //initialize constants
-        final int PARAGRAPHS_IN_CHAPTER = 20;
-        final int LINES_IN_PARAGRAPH = 20;
         //initialize factory
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         //start reading file
@@ -41,6 +48,7 @@ public class TxtToXmlParseService {
             int totalLines = 0;
             int totalWords = 0;
             HashSet<String> distinctWords = new HashSet<>();
+            StatisticsService wordCounter = new StatisticsService();
 
             //start writing file
             OutputStream out = new FileOutputStream(xmlFilePath);
@@ -63,14 +71,14 @@ public class TxtToXmlParseService {
                 while ((fileLine != null) && (paragraphCount < PARAGRAPHS_IN_CHAPTER)) {
                     paragraphCount++;
                     xmlWriter.writeStartElement("paragraph");
-                    xmlWriter.writeAttribute("id", Integer.toString(paragraphCount+totalParagraphs));
+                    xmlWriter.writeAttribute("id", Integer.toString(paragraphCount + totalParagraphs));
                     //LINE LOOP
                     int lineCount = 0;
                     while ((fileLine != null) && (lineCount < LINES_IN_PARAGRAPH)) {
                         if (printQueue.size() > 1) {
                             String lineToWrite = printQueue.poll(); //get line to write from queue
                             lineCount++;
-                            totalWords += countWordsInLine(lineToWrite, distinctWords);
+                            totalWords += wordCounter.countWordsInLine(lineToWrite, distinctWords);
                             xmlWriter.writeStartElement("line");
                             xmlWriter.writeCharacters(lineToWrite);
                             xmlWriter.writeEndElement(); // end the element line
@@ -109,7 +117,7 @@ public class TxtToXmlParseService {
             xmlWriter.writeCharacters("Konstantinos Pailas");
             xmlWriter.writeEndElement();
             xmlWriter.writeStartElement("application_class_name");
-            xmlWriter.writeCharacters("txtToXmlManager");
+            xmlWriter.writeCharacters("txtToXmlParseService");
             xmlWriter.writeEndElement();
             xmlWriter.writeEndElement();    //end the statistics element
             //close the file            
@@ -119,7 +127,7 @@ public class TxtToXmlParseService {
             out.close();        //close the output stream
             System.out.println("\n.xml file generated!!!");
             System.out.println("================================================");
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TxtToXmlParseService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -156,30 +164,4 @@ public class TxtToXmlParseService {
         }
         return nextLineSentences;
     }
-
-    /**
-     * Initialize word counter Format the line so there are no periods or commas
-     * attached to the words Split the line into words by using a space (" ") as
-     * separator Count the words and add them in the distinct words Set.
-     *
-     * @param line the given line to breakdown into words and count them
-     * @param distinctWords the Set in which we will add the words of the
-     * sentence
-     * @return int which is the number of words in the line
-     */
-    private int countWordsInLine(String line, HashSet<String> distinctWords) {
-        //
-        int wordCounter = 0;
-        //
-        line = line.replace(".", " ").replace(",", " ").replaceAll("\\s+", " ");
-        //
-        String[] words = line.split(" ");
-        //
-        for (String word : words) {
-            wordCounter++;
-            distinctWords.add(word.toLowerCase());
-        }
-        return wordCounter;
-    }
-
 }
