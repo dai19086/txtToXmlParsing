@@ -2,7 +2,6 @@ package com.ed.xmlTraining.txttoxmlmanager.services;
 
 import com.ed.xmlTraining.txttoxmlmanager.domains.Book;
 import com.ed.xmlTraining.txttoxmlmanager.domains.Chapter;
-import com.ed.xmlTraining.txttoxmlmanager.domains.Line;
 import com.ed.xmlTraining.txttoxmlmanager.domains.Paragraph;
 import com.ed.xmlTraining.txttoxmlmanager.domains.Statistics;
 import jakarta.xml.bind.JAXBContext;
@@ -40,12 +39,11 @@ public class XmlReadWriteService {
      * @throws IOException
      * @throws XMLStreamException
      */
-    public Book xmlReader(String filePath){
+    public Book xmlReader(String filePath) {
         //initialize read  objects
         Book book = new Book();
         Chapter currChapter = null;
         Paragraph currParagraph = null;
-        Line currLine = null;
         Statistics statistics = new Statistics();
 
         try {
@@ -73,10 +71,9 @@ public class XmlReadWriteService {
                                 .getValue());
                     } //check for element <line>
                     else if (("line").equals(startElement.getName().getLocalPart())) {
-                        currLine = new Line();
                         event = eventReader.nextEvent();    //read the line
                         if (event instanceof Characters) {
-                            currLine.setLine(event.asCharacters().getData());
+                            currParagraph.getLines().add(event.asCharacters().getData());
                         }
                     } //check for element <statistics>
                     else if (("statistics").equals(startElement.getName().getLocalPart())) {
@@ -85,46 +82,45 @@ public class XmlReadWriteService {
                     else if (("number_of_paragraphs").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setNumberOfParagraphs(Integer.parseInt(event.asCharacters().getData()));
+                            statistics.setNumber_of_paragraphs(Integer.parseInt(event.asCharacters().getData()));
                         }
                     } //check for element <number_of_lines>
                     else if (("number_of_lines").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setNumberOfLines(Integer.parseInt(event.asCharacters().getData()));
+                            statistics.setNumber_of_lines(Integer.parseInt(event.asCharacters().getData()));
                         }
                     } //check for element <number_of_words>
                     else if (("number_of_words").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setNumberOfWords(Integer.parseInt(event.asCharacters().getData()));
+                            statistics.setNumber_of_words(Integer.parseInt(event.asCharacters().getData()));
                         }
                     } //check for element <number_of_distinct_words>
                     else if (("number_of_distinct_words").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setNumberOfDistinctWords(Integer.parseInt(event.asCharacters().getData()));
+                            statistics.setNumber_of_distinct_words(Integer.parseInt(event.asCharacters().getData()));
                         }
                     } //check for element <date_of_creation>
                     else if (("date_of_creation").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setCreationDate(event.asCharacters().getData());
+                            statistics.setDate_of_creation(event.asCharacters().getData());
                         }
                     } //check for element <author>
                     else if (("author").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setAuthorName(event.asCharacters().getData());
+                            statistics.setAuthor(event.asCharacters().getData());
                         }
                     } //check for element <application_class_name>
                     else if (("application_class_name").equals(startElement.getName().getLocalPart())) {
                         event = eventReader.nextEvent();    //read the content of the statistic
                         if (event instanceof Characters) {
-                            statistics.setApplicationClassName(event.asCharacters().getData());
+                            statistics.setApplication_class_name(event.asCharacters().getData());
                         }
                     }
-
                 }
 
                 //if it is an end element save the data you read before in the object hierarchy
@@ -136,9 +132,6 @@ public class XmlReadWriteService {
                     } //check for element </paragraph>
                     else if ("paragraph".equals(endElement.getName().getLocalPart())) {
                         currChapter.getParagraphs().add(currParagraph);
-                    } //check for element </line>
-                    else if ("line".equals(endElement.getName().getLocalPart())) {
-                        currParagraph.getLines().add(currLine);
                     } //check for element </statistics>
                     else if ("statistics".equals(endElement.getName().getLocalPart())) {
                         book.setStatistics(statistics);
@@ -169,12 +162,8 @@ public class XmlReadWriteService {
             JAXBContext jaxbContext = JAXBContext.newInstance(Book.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            System.out.println("================================================");
-            System.out.println("Creating new .xml file..........................");
             File newXml = new File(filePath);
             marshaller.marshal(book, newXml);
-            System.out.println("\nFile created!");
-            System.out.println("================================================");
         } catch (JAXBException ex) {
             Logger.getLogger(XmlReadWriteService.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <book>
     <chapter id="1">
         <paragraph id="1">
@@ -20,6 +20,6 @@
         <number_of_distinct_words>27</number_of_distinct_words>
         <date_of_creation>15/09/2024 03:47:38</date_of_creation>
         <author>Konstantinos Pailas</author>
-        <application_class_name>txtToXmlParseService</application_class_name>
+        <application_class_name>StatisticsService</application_class_name>
     </statistics>
 </book>

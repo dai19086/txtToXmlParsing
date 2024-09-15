@@ -1,14 +1,10 @@
 package com.ed.xmlTraining.txttoxmlmanager;
 
 import com.ed.xmlTraining.txttoxmlmanager.domains.Book;
+import com.ed.xmlTraining.txttoxmlmanager.services.InformationProcessingService;
 import com.ed.xmlTraining.txttoxmlmanager.services.TxtToXmlParseService;
 import com.ed.xmlTraining.txttoxmlmanager.services.XmlReadWriteService;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.stream.XMLStreamException;
-import org.xml.sax.SAXException;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,18 +15,27 @@ public class TxtToXmlManager {
     public static void main(String[] args) {
         String loremIpsumTxt = "sample-lorem-ipsum-text-file.txt";
         String loremIpsumXml = "parsedTxt.xml";
+        String loremIpsumXmlWithSelectedParagraaphs = "selectedParagraphs.xml";
         String testTxt = "testDoc.txt";
         String testXml = "testFile.xml";
+        String testXmlWithSelectedParagraaphs = "testParagraphs.xml";
 
-        String txtFileName = "files/txt/" + testTxt;
-        String xmlNewFileName = "files/xml/" + testXml;
+        String txtFilePath = "files/txt/" + testTxt;
+        String xmlNewFilePath = "files/xml/" + testXml;
+        String xmlSelectedParagraphsPath = "files/xml/" + testXmlWithSelectedParagraaphs;
+
         TxtToXmlParseService txtToXmlConverter = new TxtToXmlParseService();
-        txtToXmlConverter.writeXmlFromTxt(xmlNewFileName, txtFileName);
+        txtToXmlConverter.writeXmlFromTxt(xmlNewFilePath, txtFilePath);
 
         XmlReadWriteService xmlReadWriter = new XmlReadWriteService();
+        Book book = xmlReadWriter.xmlReader(xmlNewFilePath);
 
-        Book book = xmlReadWriter.xmlReader(xmlNewFileName);
-        System.out.println(book);
+        InformationProcessingService processor = new InformationProcessingService();
+        ArrayList<Integer> testParagraphs = new ArrayList<>();
+        testParagraphs.add(1);
+        testParagraphs.add(4);
+        testParagraphs.add(5);
+        processor.createXmlWithSelectedParagraphs(testParagraphs, book);
 
     }
 }
