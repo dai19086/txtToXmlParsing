@@ -15,14 +15,9 @@ import java.util.ArrayList;
 public class TxtToXmlManager {
 
     public static void main(String[] args) {
-        //set file names
-        String loremIpsumTxt = "sample-lorem-ipsum-text-file.txt";
-        String loremIpsumXml = "parsedTxt.xml";
-        String testTxt = "testDoc.txt";
-        String testXml = "testFile.xml";
         //set file paths
-        String txtFilePath = "files/txt/" + loremIpsumTxt;
-        String xmlNewFilePath = "files/xml/" + loremIpsumXml;
+        String txtFilePath = "files/txt/sample-lorem-ipsum-text-file.txt";
+        String xmlNewFilePath = "files/xml/parsedTxt.xml";
         String xsdFilePath = "files/xml/bookSchema.xsd";
         //read and parse .txt file to .xml file
         TxtToXmlParseService txtToXmlConverter = new TxtToXmlParseService();
