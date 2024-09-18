@@ -25,6 +25,7 @@ public class TxtToXmlManager {
         //read generated .xml and save to a Book object
         XmlReadWriteService xmlReadWriter = new XmlReadWriteService();
         Book book = xmlReadWriter.xmlReader(xmlNewFilePath);
+        System.out.println(book);
         //initialize an array with the paragraphs' ids we want to select for the new .xml file
         ArrayList<Integer> testParagraphs = new ArrayList<>();
         testParagraphs.add(2);
